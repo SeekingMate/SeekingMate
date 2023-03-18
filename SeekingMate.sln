@@ -6,6 +6,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Freesome", "Freesome\Freeso
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{44F6B408-2610-42F7-A5A9-8B6414663D9B}"
 	ProjectSection(SolutionItems) = preProject
+		Powershell\PublishAll.ps1 = Powershell\PublishAll.ps1
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -31,7 +32,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {B4D5F87C-10E0-45BC-91B7-BBD9AE396486}
 		        SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
+		SolutionGuid = {B4D5F87C-10E0-45BC-91B7-BBD9AE396486}
 	EndGlobalSection
 EndGlobal
