@@ -16,7 +16,7 @@
         <ApplicationTitle>Freesome</ApplicationTitle>
 
         <!-- App Identifier -->
-        <ApplicationId>com.companyname.freesome</ApplicationId>
+        <ApplicationId>com.seekingmate.freesome</ApplicationId>
         <ApplicationIdGuid>9D5EC6FC-8F8F-49C0-81B6-5F4BE052A73D</ApplicationIdGuid>
 
         <!-- Versions -->
@@ -29,6 +29,14 @@
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
         <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
+        <AndroidKeyStore>True</AndroidKeyStore>
+        <AndroidSigningKeyStore>freesome.keystore</AndroidSigningKeyStore>
+        <AndroidSigningKeyAlias>key</AndroidSigningKeyAlias>
+        <AndroidSigningKeyPass></AndroidSigningKeyPass>
+        <AndroidSigningStorePass></AndroidSigningStorePass>
     </PropertyGroup>
 
     <ItemGroup>
