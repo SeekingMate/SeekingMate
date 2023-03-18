@@ -39,3 +39,7 @@ We believe that it's equally important for two people to have a shared goal and 
 ## Legality
 
 Apparently sex related products are deemed inappropriate in most stores and countries. Seeking Mate is not-for-profit (pending registration as an organization/incorporation yet) and all contents are open-source. Release packages will simply be published on Github before we find better places to host them.
+
+## MAUI Development Troubleshooting
+
+If the application [hangs at loading screen](https://github.com/dotnet/maui/issues/1787), it's due to SecureStorage reading issue. In particular, `SecureStorage.Default.GetAsync` must be called in async context and you cannot call it during startup. Or rather, don't do async get when using properties (https://github.com/xamarin/Essentials/issues/1140).

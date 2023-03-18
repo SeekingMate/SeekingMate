@@ -29,7 +29,7 @@ else
             <div>
                 <h5>Login</h5>
                 <p>Phone Number: <TextEdit @bind-Text="@Number" /></p>
-                <Button Color="Color.Primary">Login</Button>
+                <Button Color="Color.Primary" Clicked="@OnButtonClicked">Login</Button>
             </div>
         </article>
     </main>
@@ -38,4 +38,15 @@ else
 
 @code{
     private string Number;
+    async protected override Task OnInitializedAsync()
+    {
+        Data.Username = await SecureStorage.Default.GetAsync(nameof(Data.Username));
+        Data.IsLoggedIn = bool.Parse(await SecureStorage.Default.GetAsync(nameof(Data.IsLoggedIn)) ?? "False");
+        await base.OnInitializedAsync();
+    }
+    async void OnButtonClicked()
+    {
+        Data.IsLoggedIn = true;
+        await SecureStorage.Default.SetAsync(nameof(Data.IsLoggedIn), Data.IsLoggedIn.ToString());
+    }
 }

@@ -3,7 +3,12 @@
 
 <h1>Profile</h1>
 
-<TextEdit @bind-Text="Data.Username"/>
+<TextEdit Text="@Data.Username" TextChanged="@OnNameChanged" />
 
 @code {
+    async void OnNameChanged(string value)
+    {
+        Data.Username = value;
+        await SecureStorage.Default.SetAsync(nameof(Data.Username), value ?? string.Empty);
+    }
 }
