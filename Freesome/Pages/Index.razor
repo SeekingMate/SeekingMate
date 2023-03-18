@@ -1,7 +1,9 @@
 ﻿@page "/"
+@using Freesome.Data
+@inject ApplicationData Data
 
-<h1>Hello, world!</h1>
+<p>Welcome @Data.Username! Below is the latest community news.</p>
 
-Welcome to your new app.
+<h1>Community News</h1>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<iframe src="https://seekingmate.github.io/SeekingMate/" title="Freesome Online News" style="height: 100%"></iframe>

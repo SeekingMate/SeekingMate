@@ -24,6 +24,10 @@ System Features:
 * Algorithm generated (not guaranteed) best match maximizing average satiafaction score (will only work with larger samples) - it's a single metric instead of based on customized personal preferences
 * Always show how many people are currently in pool and how many are registered users
 
+### Design Language
+
+* Green for vibrant color
+
 ## Soul Mate
 
 Based on the hypothesis that there MUST be someone like us across the world, we aim to search ACROSS THE GLOBE to find the true love of our life - one love for one life. Soul Mate is not a light-hearted dating app, it's meant to find our ultimate destiny. The fundamental mechanism is based on two parts: 1) Interest matching; 2) Getting to know each other.
@@ -31,3 +35,7 @@ Based on the hypothesis that there MUST be someone like us across the world, we 
 ### Philosophy
 
 We believe that it's equally important for two people to have a shared goal and interest in order to start a relationship, and for the two to have ongoing communication and interaction to truely develop a bond. A soul mate is not built in one encountering nor computed by an algorithm - ultimately it's the human collections that forges The True Love.
+
+## Legality
+
+Apparently sex related products are deemed inappropriate in most stores and countries. Seeking Mate is not-for-profit (pending registration as an organization/incorporation yet) and all contents are open-source. Release packages will simply be published on Github before we find better places to host them.
