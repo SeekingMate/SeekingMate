@@ -1,5 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 using Freesome.Data;
+using Blazorise;
+using Blazorise.Bootstrap;
+using Blazorise.Icons.FontAwesome;
 
 namespace Freesome;
 
@@ -16,9 +19,16 @@ public static class MauiProgram
 			});
 
 		builder.Services.AddMauiBlazorWebView();
+		builder.Services
+			.AddBlazorise(options =>
+			{
+				options.Immediate = true;
+			})
+			.AddBootstrapProviders()
+			.AddFontAwesomeIcons();
 
 #if DEBUG
-		builder.Services.AddBlazorWebViewDeveloperTools();
+        builder.Services.AddBlazorWebViewDeveloperTools();
 		builder.Logging.AddDebug();
 #endif
 

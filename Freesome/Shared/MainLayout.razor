@@ -1,5 +1,8 @@
 ﻿@inherits LayoutComponentBase
+@inject ApplicationData Data
 
+@if (Data.IsLoggedIn)
+{
 <div class="page">
     <div style="background-image:none;background-color:lightgreen;" class="sidebar">
         <NavMenu />
@@ -7,11 +10,32 @@
 
     <main>
         <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+            <a href="https://freesome.totalimagine.com/" target="_blank">About</a>
         </div>
 
         <article class="content px-4">
             @Body
         </article>
     </main>
-</div>
+</div>   
+}
+else
+{
+<div class="page">
+    <main style="background-image:none;background-color:lightgreen;">
+        <article class="content px-4">
+            <h1>Freesome</h1>
+            <h3>Born Out of Desire</h3>
+            <div>
+                <h5>Login</h5>
+                <p>Phone Number: <TextEdit @bind-Text="@Number" /></p>
+                <Button Color="Color.Primary">Login</Button>
+            </div>
+        </article>
+    </main>
+</div>   
+}
+
+@code{
+    private string Number;
+}
