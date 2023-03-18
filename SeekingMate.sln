@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FreesomeGithubPages", "Free
 		docs\Freesome.md = docs\Freesome.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreesomeServer", "FreesomeServer\FreesomeServer.csproj", "{9658DF63-C917-46C4-B3D1-869D47DACC97}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,12 +29,16 @@ Global
 		{012A5A41-3D99-4C31-A2B0-4003DFA298A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{012A5A41-3D99-4C31-A2B0-4003DFA298A5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{012A5A41-3D99-4C31-A2B0-4003DFA298A5}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{9658DF63-C917-46C4-B3D1-869D47DACC97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9658DF63-C917-46C4-B3D1-869D47DACC97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9658DF63-C917-46C4-B3D1-869D47DACC97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9658DF63-C917-46C4-B3D1-869D47DACC97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		        SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
 		SolutionGuid = {B4D5F87C-10E0-45BC-91B7-BBD9AE396486}
+		        SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
 	EndGlobalSection
 EndGlobal

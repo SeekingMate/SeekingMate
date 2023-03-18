@@ -364,3 +364,4 @@ FodyWeavers.xsd
 
 # Application Specific
 *.keystore
+FreesomeServer/AuthenticationKey.cs
