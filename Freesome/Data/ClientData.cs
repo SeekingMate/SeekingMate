@@ -1,6 +1,6 @@
 ﻿namespace Freesome.Data
 {
-    internal class ApplicationData
+    internal class ClientData
     {
         public string LoginCredential { get; set; }
 

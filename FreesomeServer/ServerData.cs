@@ -7,20 +7,20 @@ namespace FreesomeServer
     {
 
     }
-    public class ApplicationData
+    public class ServerData
     {
         #region Properties
         public List<User> Users { get; set; } = new();
         #endregion
 
         #region Methods
-        public static void Save(string filepath, ApplicationData data)
+        public static void Save(string filepath, ServerData data)
         {
             using LZ4EncoderStream stream = LZ4Stream.Encode(File.Create(filepath));
             using BinaryWriter writer = new(stream, Encoding.UTF8, false);
             WriteToStream(writer, data);
         }
-        public static ApplicationData Load(string filepath)
+        public static ServerData Load(string filepath)
         {
             using LZ4DecoderStream source = LZ4Stream.Decode(File.OpenRead(filepath));
             using BinaryReader reader = new(source, Encoding.UTF8, false);
@@ -29,16 +29,16 @@ namespace FreesomeServer
         #endregion
 
         #region Routines
-        private static void WriteToStream(BinaryWriter writer, ApplicationData data)
+        private static void WriteToStream(BinaryWriter writer, ServerData data)
         {
             writer.Write(data.Users.Count);
             foreach (User user in data.Users)
             {
             }
         }
-        private static ApplicationData ReadFromStream(BinaryReader reader)
+        private static ServerData ReadFromStream(BinaryReader reader)
         {
-            ApplicationData applicationData = new();
+            ServerData applicationData = new();
 
             {
                 var userCount = reader.ReadInt32();

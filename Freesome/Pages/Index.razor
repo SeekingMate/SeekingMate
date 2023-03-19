@@ -1,6 +1,6 @@
 ﻿@page "/"
 @using Freesome.Data
-@inject ApplicationData Data
+@inject ClientData Data
 
 <p>Welcome @Data.Nickname! Below is the latest community news.</p>
 
@@ -13,11 +13,33 @@
     }
 </ul>
 
+<Button Color="Color.Secondary" Clicked="@OnButtonClicked">Donate</Button>
+
+<h2>Statistics</h2>
+
+<ul>
+    <li>Registered Users: ???</li>
+    <li>Currently in Pool: ???</li>
+    <li>Total Hotel Fund (Present): ???</li>
+    <li>Total Hotel Fund since Inception: ???</li>
+    <li>Total Server Maintenance Cost since Inception: ???</li>
+</ul>
+
+<h2>Demographics</h2>
+
+<p>(Draw a Chart)</p>
+
+<h1>Accounting</h1>
+
 @code{
     private News[] News;
     protected override async Task OnInitializedAsync()
     {
         News = await ServerAPIHelper.GetNews();
         await base.OnInitializedAsync();
+    }
+
+    void OnButtonClicked()
+    {
     }
 }

@@ -14,9 +14,12 @@ General Ideas:
 	* Will not allow editing of: Profile photo, profile background image, or any other self-identifying information
 * Absolutely no communication before sex happens.
 * (System Computed) (Average Satisfaction) Ratings
+* There is no need for any kind of email/phone number: all we need is AccessCode and Passphrase for ID purpose.
+* There will NOT be any sort of intermediate transaction at all: there is a total Hotel Fund.
 
 System Features:
 
+* Profile: Hotel Rating
 * Awards: First night on us, 
 * Achievements: First Time User, Ten Standings, 1 Year Anniversary, Pick Up Artist, N-week Strike, Party Lover (join successfuly Party Mode once)
 * Session Ratings: each person will rate 1 to 5 based on - overall satisfaction, sex/sexuality, intimacy, style

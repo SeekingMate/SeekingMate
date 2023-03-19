@@ -32,7 +32,7 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 #endif
 
-		builder.Services.AddSingleton<ApplicationData>();
+		builder.Services.AddSingleton<ClientData>();
 
 		return builder.Build();
 	}
