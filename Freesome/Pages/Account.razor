@@ -1,5 +1,6 @@
 ﻿@page "/account"
 @inject ClientData Data
+@inject NavigationManager NavManager
 
 <h1>Account</h1>
 
@@ -21,5 +22,6 @@
     {
         Data.LoginCredential = string.Empty;
         SecureStorage.Default.Remove(nameof(Data.LoginCredential));
+        NavManager.NavigateTo("/");
     }
 }

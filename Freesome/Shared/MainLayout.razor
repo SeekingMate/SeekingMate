@@ -28,9 +28,10 @@ else
             <h3>Born Out of Desire</h3>
             <div>
                 <h5>Login</h5>
-                <p>Access Code: <TextEdit @bind-Text="@AccessCode" /></p>
-                <p>Passphrase: <TextEdit @bind-Text="@Passphrase"/></p>
+                <p>Access Code: <TextEdit @bind-Text="@AccessCode" Pattern="[A-Za-z0-9 ]{3,32}" /></p>
+                <p>Passphrase: <TextEdit @bind-Text="@Passphrase" Pattern="[A-Za-z0-9 ]{3,64}" /></p>
                 <Button Color="Color.Primary" Clicked="@OnLoginButtonClicked">Login</Button>
+                <p>@ErrorMessage</p>
             </div>
             <div>
                 <h3>How it Works?</h3>
@@ -50,6 +51,7 @@ else
 @code{
     private string AccessCode;
     private string Passphrase;
+    private string ErrorMessage;
     async protected override Task OnInitializedAsync()
     {
         Data.LoginCredential = await SecureStorage.Default.GetAsync(nameof(Data.LoginCredential)) ?? string.Empty;
@@ -65,9 +67,15 @@ else
         Data.BloodTestAvailability = await SecureStorage.Default.GetAsync(nameof(Data.BloodTestAvailability)) ?? string.Empty;
         await base.OnInitializedAsync();
     }
-    void OnLoginButtonClicked()
+    async Task OnLoginButtonClicked()
     {
-        Data.LoginCredential = null;
-        SecureStorage.Default.Remove(nameof(Data.LoginCredential));
+        if (string.IsNullOrWhiteSpace(AccessCode) || string.IsNullOrWhiteSpace(Passphrase))
+            return;
+
+        Data.LoginCredential = await ServerAPIHelper.Login(AccessCode.GetHashString(), Passphrase.GetHashString());
+        await StorageHelper.UpdateValue(nameof(Data.LoginCredential), Data.LoginCredential);
+
+        if (Data.LoginCredential == null)
+            ErrorMessage = "The combination doesn't work.";
     }
 }

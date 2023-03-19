@@ -14,5 +14,6 @@
         public string MostActiveRegion { get; set; }
         public string ProfileColor { get; set; }
         public string BloodTestAvailability { get; set; }
+        public string[] Languages { get; set; }
     }
 }

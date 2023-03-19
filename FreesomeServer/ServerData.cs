@@ -8,6 +8,7 @@ namespace FreesomeServer
         public int ID { get; set; }
         public string AccessCodeHash { get;set; }
         public string PassphraseHash { get;set; }
+        public string LoginCredential { get; set; }
     }
     public class ServerData
     {

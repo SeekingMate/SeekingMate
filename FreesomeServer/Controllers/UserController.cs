@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿using FreesomeShared;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FreesomeServer.Controllers
 {
@@ -8,24 +7,38 @@ namespace FreesomeServer.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        // GET: api/<UserController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        // GET api/<UserController>/loginCredential
+        [HttpGet("{loginCredential}")]
+        public User Get(string loginCredential)
         {
-            return new string[] { "value1", "value2" };
+            return new User();
         }
 
-        // GET api/<UserController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        // POST api/<UserController>/Login
+        [HttpPost("Login")]
+        public string Login([FromServices] ServerData data, [FromBody] UserControllerLoginParameters Parameters)
         {
-            return "value";
-        }
+            if (string.IsNullOrEmpty(Parameters.AccessCodeHashed) || string.IsNullOrEmpty(Parameters.PassphraseHashed))
+                return null;
 
-        // POST api/<UserController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
+            var existingUser = data.Users.FirstOrDefault(u => u.AccessCodeHash == Parameters.AccessCodeHashed);
+            if (existingUser != null)
+            {
+                if (existingUser.PassphraseHash == Parameters.PassphraseHashed)
+                    return existingUser.LoginCredential;
+                else return null;
+            }
+            else
+            {
+                var newUser = new User()
+                {
+                    AccessCodeHash = Parameters.AccessCodeHashed,
+                    PassphraseHash = Parameters.PassphraseHashed,
+                    LoginCredential = (Parameters.AccessCodeHashed + Parameters.PassphraseHashed).GetHashString()
+                };
+                data.Users.Add(newUser);
+                return newUser.LoginCredential;
+            }
         }
 
         // PUT api/<UserController>/5

@@ -10,44 +10,53 @@
 
 <Field>
     <FieldLabel>Nickname</FieldLabel>
+    <FieldHelp>Nickname is only visible to the system; It's shown on the Welcome page for greeting purpose.</FieldHelp>
     <TextEdit Text="@Data.Nickname" Placeholder="Nickname" TextChanged="@OnNicknameChanged" />
 </Field>
 
 <Field>
-    <FieldLabel>Gender</FieldLabel>
-    <TextEdit Text="@Data.Gender" Placeholder="Gender" TextChanged="@OnGenderChanged" />
+    <FieldLabel>Biological Sex</FieldLabel>
+    <Select TValue="string" SelectedValue="@Data.Gender" SelectedValueChanged="@OnGenderChanged">
+        <SelectItem TValue="string" Value="@((string)"Male")">Male</SelectItem>
+        <SelectItem TValue="string" Value="@((string)"Female")">Female</SelectItem>
+    </Select>
 </Field>
 
 <Field>
     <FieldLabel>Age</FieldLabel>
-    <TextEdit Text="@Age" Placeholder="Age" TextChanged="@OnAgeChanged" />
+    <NumericPicker TValue="int" Value="@Data.Age" ValueChanged="@OnAgeChanged" />
+</Field>
+
+<Field>
+    <FieldLabel>Languages</FieldLabel>
+    <Select TValue="string" SelectedValues="@Data.Languages" SelectedValuesChanged="@OnLanguagesChanged" Multiple>
+        <SelectItem TValue="string" Value="@((string)"Chinese")">Chinese</SelectItem>
+        <SelectItem TValue="string" Value="@((string)"English")">English</SelectItem>
+        <SelectItem TValue="string" Value="@((string)"Japanese")">Japanese</SelectItem>
+        <SelectItem TValue="string" Value="@((string)"Korean")">Korean</SelectItem>
+    </Select>
 </Field>
 
 @code {
-    private string Age;
-
     async void OnGenderChanged(string value)
     {
         Data.Gender = value;
-        await UpdateValue(nameof(Data.Gender), value);
+        await StorageHelper.UpdateValue(nameof(Data.Gender), value);
     }
     async void OnNicknameChanged(string value)
     {
         Data.Nickname = value;
-        await UpdateValue(nameof(Data.Nickname), value);
+        await StorageHelper.UpdateValue(nameof(Data.Nickname), value);
     }
-    async void OnAgeChanged(string value)
+    async void OnAgeChanged(int value)
     {
-        Age = value;
-        Data.Age = int.Parse(value);
-        await UpdateValue(nameof(Data.Nickname), value);
+        Data.Age = value;
+        await StorageHelper.UpdateValue(nameof(Data.Nickname), value.ToString());
     }
 
-    async Task UpdateValue(string name, string value)
+    async void OnLanguagesChanged(IReadOnlyList<string> values)
     {
-        if (string.IsNullOrWhiteSpace(value))
-            SecureStorage.Default.Remove(name);
-        else
-            await SecureStorage.Default.SetAsync(name, value);
+        Data.Languages = values.ToArray();
+        await StorageHelper.UpdateValue(nameof(Data.Languages), string.Join(", ", values));
     }
 }

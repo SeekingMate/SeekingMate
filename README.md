@@ -19,7 +19,7 @@ General Ideas:
 
 System Features:
 
-* Profile: Hotel Rating
+* Profile: Hotel Rank, 
 * Awards: First night on us, 
 * Achievements: First Time User, Ten Standings, 1 Year Anniversary, Pick Up Artist, N-week Strike, Party Lover (join successfuly Party Mode once)
 * Session Ratings: each person will rate 1 to 5 based on - overall satisfaction, sex/sexuality, intimacy, style
@@ -42,6 +42,8 @@ We believe that it's equally important for two people to have a shared goal and 
 ## Legality
 
 Apparently sex related products are deemed inappropriate in most stores and countries. Seeking Mate is not-for-profit (pending registration as an organization/incorporation yet) and all contents are open-source. Release packages will simply be published on Github before we find better places to host them.
+
+On public stores, Freesome can be marketed as Hotel Sharing service (which it is), and Soul Mate should be marketed as Service to Find Serious Friends.
 
 ## MAUI Development Troubleshooting
 
