@@ -1,0 +1,22 @@
+﻿@page "/enroll"
+
+<h1>Enroll</h1>
+
+<p>The next poll will happen on (DATE).</p>
+
+@if (true)
+{
+    <p>You match:</p>
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <p>You do not have any match from last poll.</p>
+}
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        return;
+    }
+}

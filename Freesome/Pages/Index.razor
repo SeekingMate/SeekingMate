@@ -2,8 +2,22 @@
 @using Freesome.Data
 @inject ApplicationData Data
 
-<p>Welcome @Data.Username! Below is the latest community news.</p>
+<p>Welcome @Data.Nickname! Below is the latest community news.</p>
 
 <h1>Community News</h1>
 
-<iframe src="https://seekingmate.github.io/SeekingMate/" title="Freesome Online News" style="height: 120em; height: 100%"></iframe>
+<ul>
+    @foreach (var item in News ?? Array.Empty<News>())
+    {
+        <li>item</li>
+    }
+</ul>
+
+@code{
+    private News[] News;
+    protected override async Task OnInitializedAsync()
+    {
+        News = await ServerAPIHelper.GetNews();
+        await base.OnInitializedAsync();
+    }
+}

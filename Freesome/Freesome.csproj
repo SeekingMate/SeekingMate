@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
-
     <PropertyGroup>
         <TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
         <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
@@ -62,6 +61,11 @@
         <PackageReference Include="Blazorise.Bootstrap" Version="1.2.1" />
         <PackageReference Include="Blazorise.Icons.FontAwesome" Version="1.2.1" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+        <PackageReference Include="RestSharp" Version="109.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\FreesomeShared\FreesomeShared.csproj" />
     </ItemGroup>
 
 </Project>

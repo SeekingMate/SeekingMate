@@ -1,7 +1,7 @@
 ﻿@inherits LayoutComponentBase
 @inject ApplicationData Data
 
-@if (Data.IsLoggedIn)
+@if (Data.LoginCredential != null)
 {
 <div class="page">
     <div style="background-image:none;background-color:lightgreen;" class="sidebar">
@@ -17,7 +17,7 @@
             @Body
         </article>
     </main>
-</div>   
+</div>
 }
 else
 {
@@ -28,25 +28,34 @@ else
             <h3>Born Out of Desire</h3>
             <div>
                 <h5>Login</h5>
-                <p>Phone Number: <TextEdit @bind-Text="@Number" /></p>
+                <p>Phone Number: <TextEdit @bind-Text="@Number"/></p>
                 <Button Color="Color.Primary" Clicked="@OnButtonClicked">Login</Button>
             </div>
         </article>
     </main>
-</div>   
+</div>
 }
 
 @code{
     private string Number;
     async protected override Task OnInitializedAsync()
     {
-        Data.Username = await SecureStorage.Default.GetAsync(nameof(Data.Username));
-        Data.IsLoggedIn = bool.Parse(await SecureStorage.Default.GetAsync(nameof(Data.IsLoggedIn)) ?? "False");
+        Data.LoginCredential = await SecureStorage.Default.GetAsync(nameof(Data.LoginCredential)) ?? string.Empty;
+        Data.Nickname = await SecureStorage.Default.GetAsync(nameof(Data.Nickname)) ?? string.Empty;
+        Data.Gender = await SecureStorage.Default.GetAsync(nameof(Data.Gender)) ?? string.Empty;
+        Data.Age = int.Parse(await SecureStorage.Default.GetAsync(nameof(Data.Age)) ?? string.Empty);
+        Data.Ethinity = await SecureStorage.Default.GetAsync(nameof(Data.Ethinity)) ?? string.Empty;
+        Data.Weight = float.Parse(await SecureStorage.Default.GetAsync(nameof(Data.Weight)) ?? string.Empty);
+        Data.Height = float.Parse(await SecureStorage.Default.GetAsync(nameof(Data.Height)) ?? string.Empty);
+        Data.Profession = await SecureStorage.Default.GetAsync(nameof(Data.Profession)) ?? string.Empty;
+        Data.MostActiveRegion = await SecureStorage.Default.GetAsync(nameof(Data.MostActiveRegion)) ?? string.Empty;
+        Data.ProfileColor = await SecureStorage.Default.GetAsync(nameof(Data.ProfileColor)) ?? string.Empty;
+        Data.BloodTestAvailability = await SecureStorage.Default.GetAsync(nameof(Data.BloodTestAvailability)) ?? string.Empty;
         await base.OnInitializedAsync();
     }
     async void OnButtonClicked()
     {
-        Data.IsLoggedIn = true;
-        await SecureStorage.Default.SetAsync(nameof(Data.IsLoggedIn), Data.IsLoggedIn.ToString());
+        Data.LoginCredential = null;
+        await SecureStorage.Default.SetAsync(nameof(Data.LoginCredential), Data.LoginCredential.ToString());
     }
 }

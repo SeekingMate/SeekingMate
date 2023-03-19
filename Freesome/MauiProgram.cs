@@ -32,7 +32,6 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 #endif
 
-		builder.Services.AddSingleton<WeatherForecastService>();
 		builder.Services.AddSingleton<ApplicationData>();
 
 		return builder.Build();

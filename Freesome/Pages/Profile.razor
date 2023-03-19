@@ -3,12 +3,43 @@
 
 <h1>Profile</h1>
 
-<TextEdit Text="@Data.Username" TextChanged="@OnNameChanged" />
+<Field>
+    <FieldLabel>Your Rating</FieldLabel>
+    <p>Ratings will be available after you have hang out with 10 people.</p>
+</Field>
+
+<Field>
+    <FieldLabel>Nickname</FieldLabel>
+    <TextEdit Text="@Data.Nickname" Placeholder="Nickname" TextChanged="@OnNicknameChanged" />
+</Field>
+
+<Field>
+    <FieldLabel>Gender</FieldLabel>
+    <TextEdit Text="@Data.Gender" Placeholder="Gender" TextChanged="@OnGenderChanged" />
+</Field>
+
+<Field>
+    <FieldLabel>Age</FieldLabel>
+    <TextEdit Text="@Age" Placeholder="Age" TextChanged="@OnAgeChanged" />
+</Field>
 
 @code {
-    async void OnNameChanged(string value)
+    private string Age;
+
+    async void OnGenderChanged(string value)
     {
-        Data.Username = value;
-        await SecureStorage.Default.SetAsync(nameof(Data.Username), value ?? string.Empty);
+        Data.Gender = value;
+        await SecureStorage.Default.SetAsync(nameof(Data.Gender), value ?? string.Empty);
+    }
+    async void OnNicknameChanged(string value)
+    {
+        Data.Nickname = value;
+        await SecureStorage.Default.SetAsync(nameof(Data.Nickname), value ?? string.Empty);
+    }
+    async void OnAgeChanged(string value)
+    {
+        Age = value;
+        Data.Age = int.Parse(value);
+        await SecureStorage.Default.SetAsync(nameof(Data.Nickname), value ?? string.Empty);
     }
 }

@@ -10,7 +10,7 @@ General Ideas:
 
 * One pairing chance per week, if you miss it, you miss it: this is the key idea behind non-biasing mating
 * Each propose then pay half the hotel price - yes, first time contact must happen within a hotel, and we take 1%
-* Basic profile data: Gender, Age, Ethinity, Height, Weight, Profession, Most Active Region, Profile Color, Blood Test Result Availability and Date, Sex Experience
+* Basic profile data: Nickname (only used by the system for greeting purpose), Gender, Age, Ethinity, Height, Weight, Profession, Most Active Region, Profile Color, Blood Test Result Availability and Date, Sex Experience
 	* Will not allow editing of: Profile photo, profile background image, or any other self-identifying information
 * Absolutely no communication before sex happens.
 * (System Computed) (Average Satisfaction) Ratings
