@@ -5,7 +5,9 @@ namespace FreesomeServer
 {
     public class User
     {
-
+        public int ID { get; set; }
+        public string AccessCodeHash { get;set; }
+        public string PassphraseHash { get;set; }
     }
     public class ServerData
     {
@@ -34,6 +36,9 @@ namespace FreesomeServer
             writer.Write(data.Users.Count);
             foreach (User user in data.Users)
             {
+                writer.Write(user.ID);
+                writer.Write(user.AccessCodeHash);
+                writer.Write(user.PassphraseHash);
             }
         }
         private static ServerData ReadFromStream(BinaryReader reader)
@@ -46,6 +51,9 @@ namespace FreesomeServer
                 {
                     var user = new User()
                     {
+                        ID = reader.ReadInt32(),
+                        AccessCodeHash = reader.ReadString(),
+                        PassphraseHash = reader.ReadString(),
                     };
                     applicationData.Users.Add(user);
                 }

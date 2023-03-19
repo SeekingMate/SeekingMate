@@ -29,17 +29,25 @@
     async void OnGenderChanged(string value)
     {
         Data.Gender = value;
-        await SecureStorage.Default.SetAsync(nameof(Data.Gender), value ?? string.Empty);
+        await UpdateValue(nameof(Data.Gender), value);
     }
     async void OnNicknameChanged(string value)
     {
         Data.Nickname = value;
-        await SecureStorage.Default.SetAsync(nameof(Data.Nickname), value ?? string.Empty);
+        await UpdateValue(nameof(Data.Nickname), value);
     }
     async void OnAgeChanged(string value)
     {
         Age = value;
         Data.Age = int.Parse(value);
-        await SecureStorage.Default.SetAsync(nameof(Data.Nickname), value ?? string.Empty);
+        await UpdateValue(nameof(Data.Nickname), value);
+    }
+
+    async Task UpdateValue(string name, string value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            SecureStorage.Default.Remove(name);
+        else
+            await SecureStorage.Default.SetAsync(name, value);
     }
 }

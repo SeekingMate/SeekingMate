@@ -9,11 +9,17 @@
     <li>Total Donation: (AMOUNT)</li>
 </ul>
 
-<Button Color="Color.Danger" Clicked="@OnButtonClicked">Destroy Account</Button>
+<Button Color="Color.Danger" Clicked="@OnDestroyAccountButtonClicked">Destroy Account</Button>
+<Button Color="Color.Secondary" Clicked="@OnLogoutButtonClicked">Logout</Button>
 
 @code {
-    void OnButtonClicked()
+    void OnDestroyAccountButtonClicked()
     {
         return;
+    }
+    void OnLogoutButtonClicked()
+    {
+        Data.LoginCredential = string.Empty;
+        SecureStorage.Default.Remove(nameof(Data.LoginCredential));
     }
 }
