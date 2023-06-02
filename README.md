@@ -1,6 +1,6 @@
 # Seeking Mate
 
-Freesome is the 1st product from the Seeking Mate series - the second product is called Soul Mate and it's meat for serious long-term mating (at Seeking Mate we don't use the word marriage).
+Freesome is the 1st product from the Seeking Mate series - the second product is called Soul Mate and it's meant for serious long-term mating (at Seeking Mate we don't use the word marriage).
 
 ## Freesome - Born out of Desire by Seeking Mate
 
